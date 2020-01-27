@@ -25,7 +25,7 @@ public class PropertyController {
 		
 	}	
 	
-	//方法2
+	//方法2: @ConfigurationProperties(prefix="book") 类型安全的配置
 	//@Value("${book.author}")     不需要使用@Value
 	private String author;
 		
