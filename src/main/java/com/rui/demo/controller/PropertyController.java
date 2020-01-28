@@ -10,22 +10,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @ConfigurationProperties(prefix="book")
 public class PropertyController {
-	
-	//方法1
+		
+	//方法1-----------------------------------------------------------
 	@Value("${book.author}")
 	private String author2;
 		
 	@Value("${book.name}")
-	private String name2;
+	private String name2;	
 	
-	@RequestMapping("/property")
-	@ResponseBody	
-	public String showInfo() {
-		return author2 + ":" + name2 + ";" + author + ":" + name ;
-		
-	}	
-	
-	//方法2: @ConfigurationProperties(prefix="book") 类型安全的配置
+	//方法2:----------------------------------------------------------
+	//@ConfigurationProperties(prefix="book") 类型安全的配置
 	//@Value("${book.author}")     不需要使用@Value
 	private String author;
 		
@@ -49,4 +43,11 @@ public class PropertyController {
 		this.name = name;
 	}	
 
+	//---------------------------------------------------------------
+	@RequestMapping("/property")
+	@ResponseBody	
+	public String showInfo() {
+		return author2 + ":" + name2 + ";" + author + ":" + name ;
+		
+	}	
 }

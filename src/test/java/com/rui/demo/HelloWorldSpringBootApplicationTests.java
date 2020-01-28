@@ -21,8 +21,7 @@ class HelloWorldSpringBootApplicationTests {
 	private IndexController indexController;
 
 	@Test
-	public void test1() {
-		
+	public void test1() {		
 		TestCase.assertEquals(this.indexController.first(), "Hello World!");
 	}
 }
