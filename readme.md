@@ -7,6 +7,8 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.0.RELEASE</version>		 
 	</parent>
+	
+	对架包版本进行管理
 
 # POM dependency
 
