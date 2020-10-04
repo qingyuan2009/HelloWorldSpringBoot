@@ -8,7 +8,8 @@
 		<version>2.2.0.RELEASE</version>		 
 	</parent>
 	
-	对架包版本进行管理
+	对架包版本进行管理，例如：
+	<mysql.version>8.0.18</mysql.version>
 
 # POM dependency
 
