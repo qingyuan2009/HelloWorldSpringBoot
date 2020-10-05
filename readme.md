@@ -8,7 +8,7 @@
 		<version>2.2.0.RELEASE</version>		 
 	</parent>
 	
-	对架包版本进行管理，例如：
+	* 对架包版本进行管理，例如：
 	<mysql.version>8.0.18</mysql.version>
 
 # POM dependency
@@ -18,6 +18,8 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-web</artifactId>
 	</dependency>	
+	
+	* 包含了Spring MVC 和 Spring的架包...
 	
 # POM 指定JDK 版本
 
@@ -34,8 +36,17 @@
 # @SpringBootApplication
 会调用@EnableAutoConfiguration: 启用自动配置
 
+对POM中dependency的架包进行自动配置
+
 # 如果要排除部分自动配置：
 在spring-boot-autoconfigure-2.2.0.RELEASE.jar 下找到对应的configuration class
 @EnableAutoConfiguration(exclude={**RedisAutoConfiguration.class**})
+
+# 全局配置文件
+application.properties 或 application.yml 通常在resource下
+
+server.port=8080
+server.context-path=/root
+
 
 

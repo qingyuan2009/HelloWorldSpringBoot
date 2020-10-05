@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 // 使用了@RestController 就不需要@Controller
-public class IndexController {
+public class Exe_001 {
 
 	@RequestMapping("/")
 	//@ResponseBody  使用了@RestController 就不需要@ResponseBody
