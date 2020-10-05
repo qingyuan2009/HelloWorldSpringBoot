@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Exe_000 {
     
     @RequestMapping("/first")
+    //ResponseBody: 返回的是Restful内容，不使用会进行跳转
     @ResponseBody
     public String first() {
         return "Hello World!";
     }
     
-    //标准执行入口
+    //标准执行入口，一般会使用启动类取代
     public static void main(String[] args) {
         SpringApplication.run(Exe_000.class, args);
     }

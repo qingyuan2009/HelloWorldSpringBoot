@@ -1,4 +1,4 @@
-# Spring boot 核心特点：
+# SpringBoot 核心特点：
 
 *	用jar包执行web程序
 *	内嵌servlet容器， 比如tomcat, Jetty...
@@ -119,5 +119,33 @@ POM中可以看到使用了自己的父工程，并可以添加例如：
 
 测试见test package
  
+# log
+Spring boot 默认的是logback, sprint-boot-starter-logging包里，默认依赖
+TRACE->DEBUG->INFO->WARN->ERROR->FATAL->OFF  默认是INFO
+全局配置文件： 例如
+logging.level.root=WARN
+logging.level.org.springframework.web=DEBUG
+默认日志是写在控制台，如何写入文件：
+logging.file=e:\\springboot\info.log
+logging.pattern.console=%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n
+logging.pattern.file=%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n
+
+log4j?
+
+# springboot 开发模式
+当修改代码后，服务器自动重启
+
+<!-- 开发模式！ -->	
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>springloaded</artifactId>
+	<version>1.2.8.RELEASE</version>			
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-devtools</artifactId>			
+</dependency>
+
+
 
 

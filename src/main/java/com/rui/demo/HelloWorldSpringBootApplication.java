@@ -6,6 +6,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 //组合注解 @SpringBootApplication 包含了 @EnableAutoConfiguration, @ComponentScan
+//@EnableAutoConfiguration
+//@ComponentScan("com.rui.demo.controller")  
 public class HelloWorldSpringBootApplication {
 
 	public static void main(String[] args) {

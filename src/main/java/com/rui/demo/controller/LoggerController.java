@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoggerController {
 	
-	//使用spring 默认的backlog
+	//使用spring 默认的logback
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping("/show")

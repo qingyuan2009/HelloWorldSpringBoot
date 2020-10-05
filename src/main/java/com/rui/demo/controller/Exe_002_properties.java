@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @ConfigurationProperties(prefix="book")
 //获取application.yml中的自定义属性
-public class Exe_002 {
+public class Exe_002_properties {
 		
 	//方法1-----------------------------------------------------------
 	@Value("${book.author}")

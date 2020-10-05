@@ -31,7 +31,7 @@
     <!-- logback为java中的包 -->
     <logger name="com.rui.demo.controller"/>
     <!--logback.LogbackDemo：类的全路径 -->
-    <logger name="com.rui.demo.controller.indexController" level="WARN" additivity="false">
+    <logger name="com.rui.demo.controller.LoggerController" level="WARN" additivity="false">
         <appender-ref ref="console"/>
     </logger>
     
