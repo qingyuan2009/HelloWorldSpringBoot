@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class Exe_000 {
     
-    @RequestMapping("/exe_000")
+    @RequestMapping("/first")
     @ResponseBody
     public String first() {
         return "Hello World!";
