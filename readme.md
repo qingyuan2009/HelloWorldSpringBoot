@@ -146,6 +146,101 @@ log4j?
 	<artifactId>spring-boot-devtools</artifactId>			
 </dependency>
 
+# 静态资源
+resource下的static文件夹可以直接外部访问
+比如：localhost:8080/001.jpg
+可以使用全局配置 spring.resources.static-locations=classpath:/static/
 
+# 定义消息转换器，防止乱码
+@Bean  //自动放入MVC容器
+public StringHttpMessageConverter stringHttpMessageConverter() {
+	StringHttpMessageConverter convert = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+	return convert;
+}
 
+# FastJson: 将Object转为json格式
+@Bean
+public HttpMessageConverters fastJsonMessageConverter() {
+	//创建FastJson的消息转换器
+	FastJsonHttpMessageConverter convert =  new FastJsonHttpMessageConverter();
+	//创建FastJson的配置对象
+	FastJsonConfig config = new FastJsonConfig();
+	//对Json数据进行格式化
+	config.setSerializerFeatures(SerializerFeature.PrettyFormat);
+	convert.setFastJsonConfig(config);
+	HttpMessageConverter<?> con = convert;
+	return new HttpMessageConverters(con);
+}
+
+//使用了FastJson转换器， 详见HelloWorldSpringBootApplication.java
+@RequestMapping("/person")    
+public Object show() {
+	Person person = new Person();
+	person.setId(1);
+	person.setName("zhourui");
+	person.setDate(new Date());        
+	return person;
+}
+
+注意防止乱码，在全局配置中： spring.http.encoding.force=true
+
+# 拦截器 Interceptor
+
+# 全局异常处理器
+@ControllerAdvice
+public class Exe_004_GlobalExceptionHandler {
+    
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public Map<String, Object> handleException(Exception exception){
+        Map<String, Object> map = new HashMap<>();
+        map.put("errorCode", 500);
+        map.put("errorMessage", exception.toString());
+        return map;        
+    }
+}
+
+# 异步调用
+@Service
+public class AsyncServiceImpl implements AsyncService {
+
+    private static Random random = new Random();
+    
+    @Async  //异步执行
+    @Override
+    public Future<String> doTask1() throws Exception {
+        System.out.println("任务一开始执行");
+        long start=System.currentTimeMillis();
+        Thread.sleep(random.nextInt(10000));
+        long end=System.currentTimeMillis();
+        System.out.println("任务一结束，耗时：" + (end - start) + " 毫秒");        
+        return new AsyncResult<>("任务一结束");
+    }
+
+    @Async
+    @Override
+    public Future<String> doTask2() throws Exception {
+        System.out.println("任务二开始执行");
+        long start=System.currentTimeMillis();
+        Thread.sleep(random.nextInt(10000));
+        long end=System.currentTimeMillis();
+        System.out.println("任务二结束，耗时：" + (end - start) + " 毫秒");        
+        return new AsyncResult<>("任务二结束");
+    }
+
+    @Async
+    @Override
+    public Future<String> doTask3() throws Exception {
+        System.out.println("任务三开始执行");
+        long start=System.currentTimeMillis();
+        Thread.sleep(random.nextInt(10000));
+        long end=System.currentTimeMillis();
+        System.out.println("任务三结束，耗时：" + (end - start) + " 毫秒");        
+        return new AsyncResult<>("任务三结束");
+    }
+
+启动类开启异步执行
+@SpringBootApplication  
+@EnableAsync   //启动类开启异步执行
+public class HelloWorldSpringBootApplication {...}
 
